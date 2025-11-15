@@ -26,17 +26,17 @@ export const Route = createRootRouteWithContext<RouterAppContext>()({
 	head: () => ({
 		meta: [
 			{
-				title: "my-better-t-app",
+				title: "Repaper",
 			},
 			{
 				name: "description",
-				content: "my-better-t-app is a web application",
+				content: "Repaper is a modern research paper editor with collaborative features",
 			},
 		],
 		links: [
 			{
 				rel: "icon",
-				href: "/favicon.ico",
+				href: "/repaper.svg",
 			},
 		],
 	}),
