@@ -1,0 +1,35 @@
+# Dependencies
+node_modules
+bun.lock
+package-lock.json
+yarn.lock
+
+# Build outputs
+dist
+build
+.next
+.turbo
+out
+*.tsbuildinfo
+
+# Generated files
+*.gen.ts
+*.gen.tsx
+routeTree.gen.ts
+
+# Logs
+*.log
+
+# Environment files
+.env
+.env.*
+
+# IDE
+.vscode
+.idea
+
+# Other
+coverage
+.DS_Store
+*.md
+
