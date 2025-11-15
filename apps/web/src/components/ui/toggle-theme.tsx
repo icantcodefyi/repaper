@@ -1,23 +1,23 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { MonitorCogIcon, MoonStarIcon, SunIcon } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { useTheme } from 'next-themes';
-import { cn } from '@/lib/utils';
+import React from "react";
+import { MonitorCogIcon, MoonStarIcon, SunIcon } from "lucide-react";
+import { motion } from "framer-motion";
+import { useTheme } from "next-themes";
+import { cn } from "@/lib/utils";
 
 const THEME_OPTIONS = [
 	{
 		icon: MonitorCogIcon,
-		value: 'system',
+		value: "system",
 	},
 	{
 		icon: SunIcon,
-		value: 'light',
+		value: "light",
 	},
 	{
 		icon: MoonStarIcon,
-		value: 'dark',
+		value: "dark",
 	},
 ];
 
@@ -46,10 +46,10 @@ export function ToggleTheme() {
 			{THEME_OPTIONS.map((option) => (
 				<button
 					className={cn(
-						'relative flex size-7 cursor-pointer items-center justify-center rounded-md transition-all',
+						"relative flex size-7 cursor-pointer items-center justify-center rounded-md transition-all",
 						theme === option.value
-							? 'text-foreground'
-							: 'text-muted-foreground hover:text-foreground',
+							? "text-foreground"
+							: "text-muted-foreground hover:text-foreground"
 					)}
 					role="radio"
 					aria-checked={theme === option.value}
@@ -59,7 +59,7 @@ export function ToggleTheme() {
 					{theme === option.value && (
 						<motion.div
 							layoutId="theme-option"
-							transition={{ type: 'spring', bounce: 0.1, duration: 0.75 }}
+							transition={{ type: "spring", bounce: 0.1, duration: 0.75 }}
 							className="border-muted-foreground/50 absolute inset-0 rounded-md border"
 						/>
 					)}

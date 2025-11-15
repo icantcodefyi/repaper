@@ -2,25 +2,20 @@
 // safe to delete
 
 {
-  "$schema": "https://r2.better-t-stack.dev/schema.json",
-  "version": "3.4.2",
-  "createdAt": "2025-11-15T19:54:19.009Z",
-  "database": "postgres",
-  "orm": "drizzle",
-  "backend": "elysia",
-  "runtime": "bun",
-  "frontend": [
-    "tanstack-router"
-  ],
-  "addons": [
-    "fumadocs",
-    "turborepo"
-  ],
-  "examples": [],
-  "auth": "better-auth",
-  "packageManager": "bun",
-  "dbSetup": "neon",
-  "api": "orpc",
-  "webDeploy": "none",
-  "serverDeploy": "none"
+	"$schema": "https://r2.better-t-stack.dev/schema.json",
+	"version": "3.4.2",
+	"createdAt": "2025-11-15T19:54:19.009Z",
+	"database": "postgres",
+	"orm": "drizzle",
+	"backend": "elysia",
+	"runtime": "bun",
+	"frontend": ["tanstack-router"],
+	"addons": ["fumadocs", "turborepo"],
+	"examples": [],
+	"auth": "better-auth",
+	"packageManager": "bun",
+	"dbSetup": "neon",
+	"api": "orpc",
+	"webDeploy": "none",
+	"serverDeploy": "none",
 }

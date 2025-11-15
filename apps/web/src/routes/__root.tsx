@@ -30,8 +30,7 @@ export const Route = createRootRouteWithContext<RouterAppContext>()({
 			},
 			{
 				name: "description",
-				content:
-					"Repaper is a modern research paper editor",
+				content: "Repaper is a modern research paper editor",
 			},
 		],
 		links: [
