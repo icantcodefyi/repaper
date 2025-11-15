@@ -1,7 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Button } from "./ui/button";
 
-const HIDDEN_ROUTES = ["/editor"];
+const HIDDEN_ROUTES = ["/editor", "/login", "sign-up"];
 
 export default function Header() {
 	const router = useRouterState();
