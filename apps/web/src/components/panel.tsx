@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { usePanel } from "./panel-provider";
-import { CloseIcon } from "./tiptap-icons/close-icon";
+import { CloseIcon } from "./ui/icons";
 import { cn } from "@/lib/utils";
 
 export function Panel() {
