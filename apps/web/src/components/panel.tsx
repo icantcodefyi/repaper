@@ -32,18 +32,18 @@ export function Panel() {
 						},
 					}}
 					className={cn(
-						"h-full bg-card border-border overflow-hidden shrink-0",
+						"h-full bg-card border-border overflow-hidden flex-shrink-0",
 						borderSide,
 						panel.side === "left" ? "order-first" : "order-last"
 					)}
+					style={{ width: panel.width }}
 				>
 					<motion.div
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
 						transition={{ duration: 0.15, delay: 0.1 }}
-						className="h-full overflow-y-auto relative"
-						style={{ width: `${panel.width}px` }}
+						className="h-full overflow-y-auto relative w-full"
 					>
 						{/* Close Button */}
 						<button

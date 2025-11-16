@@ -13,6 +13,7 @@ interface PanelContextValue {
 	panel: PanelConfig;
 	openPanel: (side: PanelSide, content: ReactNode, width?: number) => void;
 	closePanel: () => void;
+	togglePanel: (side: PanelSide, content: ReactNode, width?: number) => void;
 	setWidth: (width: number) => void;
 }
 
@@ -43,12 +44,34 @@ export function PanelProvider({ children }: { children: ReactNode }) {
 		setPanel((prev) => ({ ...prev, isOpen: false }));
 	};
 
+	const togglePanel = (
+		side: PanelSide,
+		content: ReactNode,
+		width: number = 350
+	) => {
+		setPanel((prev) => {
+			// If panel is open, close it
+			if (prev.isOpen) {
+				return { ...prev, isOpen: false };
+			}
+			// If panel is closed, open it
+			return {
+				isOpen: true,
+				side,
+				width,
+				content,
+			};
+		});
+	};
+
 	const setWidth = (width: number) => {
 		setPanel((prev) => ({ ...prev, width }));
 	};
 
 	return (
-		<PanelContext.Provider value={{ panel, openPanel, closePanel, setWidth }}>
+		<PanelContext.Provider
+			value={{ panel, openPanel, closePanel, togglePanel, setWidth }}
+		>
 			{children}
 		</PanelContext.Provider>
 	);
