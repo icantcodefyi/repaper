@@ -20,7 +20,7 @@ export function PlateEditor() {
 		<div className="relative h-full w-full flex flex-col">
 			{/* Sidebar Trigger - Sticky at top */}
 			<div className="sticky top-0 left-0 z-50 p-4 bg-background/95 backdrop-blur-sm">
-				<SidebarTrigger className="bg-background border border-border shadow-sm hover:bg-accent" />
+				<SidebarTrigger className="bg-background border border-border hover:bg-accent" />
 			</div>
 
 			{/* Editor with Toolbar - All in one Plate */}

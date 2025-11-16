@@ -92,7 +92,7 @@ export function BlockContextMenu({ children }: { children: React.ReactNode }) {
           }, 0);
         }}
       >
-        <div className="w-full">{children}</div>
+        <div className="w-full h-[calc(100vh-120px)]">{children}</div>
       </ContextMenuTrigger>
       {isOpen && (
         <ContextMenuContent
