@@ -6,7 +6,7 @@ import { Toolbar } from "./toolbar";
 
 export function FixedToolbar(props: React.ComponentProps<typeof Toolbar>) {
 	return (
-		<div className="sticky bottom-4 left-0 right-0 z-50">
+		<div className="sticky bottom-0 left-0 right-0 z-50">
 			<Toolbar
 				{...props}
 				className={cn(

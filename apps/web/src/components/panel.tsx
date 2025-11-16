@@ -3,66 +3,91 @@ import { usePanel } from "./panel-provider";
 import { CloseIcon } from "./ui/icons";
 import { cn } from "@/lib/utils";
 
+const PANEL_WIDTH = "16rem";
+
 export function Panel() {
 	const { panel, closePanel } = usePanel();
-
-	const closeButtonPosition =
-		panel.side === "right"
-			? "left-4 top-4" // top-left within right panel
-			: "right-4 top-4"; // top-right within left panel
-
-	const borderSide = panel.side === "right" ? "border-l" : "border-r";
 
 	return (
 		<AnimatePresence mode="wait" initial={false}>
 			{panel.isOpen && (
-				<motion.div
+				<div
 					key={`panel-${panel.side}`}
-					initial={{ width: 0, opacity: 0 }}
-					animate={{ width: panel.width, opacity: 1 }}
-					exit={{ width: 0, opacity: 0 }}
-					transition={{
-						width: {
+					className="group peer text-sidebar-foreground hidden md:block"
+					data-side={panel.side}
+					data-slot="panel"
+				>
+					{/* This handles the panel gap */}
+					<motion.div
+						data-slot="panel-gap"
+						className="relative bg-transparent"
+						initial={{ width: 0 }}
+						animate={{
+							width: PANEL_WIDTH,
+						}}
+						exit={{ width: 0 }}
+						transition={{
 							type: "tween",
 							duration: 0.25,
 							ease: "easeInOut",
-						},
-						opacity: {
-							duration: 0.15,
-						},
-					}}
-					className={cn(
-						"h-full bg-card border-border overflow-hidden flex-shrink-0",
-						borderSide,
-						panel.side === "left" ? "order-first" : "order-last"
-					)}
-					style={{ width: panel.width }}
-				>
+						}}
+					/>
 					<motion.div
-						initial={{ opacity: 0 }}
-						animate={{ opacity: 1 }}
-						exit={{ opacity: 0 }}
-						transition={{ duration: 0.15, delay: 0.1 }}
-						className="h-full overflow-y-auto relative w-full"
+						data-slot="panel-container"
+						className={cn("fixed inset-y-0 z-10 hidden h-svh md:flex p-2")}
+						initial={{ width: 0, opacity: 0 }}
+						animate={{
+							width: PANEL_WIDTH,
+							[panel.side === "right" ? "right" : "left"]: 0,
+							opacity: 1,
+						}}
+						exit={{
+							width: 0,
+							[panel.side === "right" ? "right" : "left"]:
+								`calc(${PANEL_WIDTH} * -1)`,
+							opacity: 0,
+						}}
+						transition={{
+							type: "tween",
+							duration: 0.25,
+							ease: "easeInOut",
+						}}
+						style={{
+							[panel.side === "right" ? "right" : "left"]: 0,
+						}}
 					>
-						{/* Close Button */}
-						<button
-							onClick={closePanel}
-							className={cn(
-								"absolute p-2 rounded-md hover:bg-accent transition-colors z-10",
-								closeButtonPosition
-							)}
-							aria-label="Close panel"
+						<motion.div
+							data-slot="panel-inner"
+							className="bg-sidebar border-sidebar-border flex h-full w-full flex-col rounded-lg border shadow-sm"
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							exit={{ opacity: 0 }}
+							transition={{ duration: 0.15, delay: 0.1 }}
 						>
-							<CloseIcon className="w-5 h-5 text-muted-foreground hover:text-foreground" />
-						</button>
+							{/* Panel Header */}
+							<div className="flex flex-col gap-2 p-2" data-slot="panel-header">
+								<div className="flex items-center justify-between">
+									<div className="flex-1" />
+									<button
+										onClick={closePanel}
+										className="p-2 rounded-md hover:bg-sidebar-accent transition-colors"
+										aria-label="Close panel"
+									>
+										<CloseIcon className="w-4 h-4 text-sidebar-foreground/70 hover:text-sidebar-foreground" />
+									</button>
+								</div>
+							</div>
 
-						{/* Content */}
-						<div className="pt-16 px-6 pb-6 text-card-foreground">
-							{panel.content}
-						</div>
+							{/* Panel Content */}
+							<div
+								className="flex min-h-0 flex-1 flex-col gap-2 overflow-auto p-2"
+								data-slot="panel-content"
+							>
+								<div className="text-sidebar-foreground">{panel.content}</div>
+							</div>
+						</motion.div>
 					</motion.div>
-				</motion.div>
+				</div>
 			)}
 		</AnimatePresence>
 	);

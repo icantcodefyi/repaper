@@ -14,13 +14,9 @@ function EditorContent() {
 		<>
 			<AppSidebar />
 			<SidebarInset className="flex-1 overflow-hidden relative">
-				<div className="flex h-screen w-full relative">
-					<div className="flex-1 min-w-0 relative">
-						<PlateEditor />
-					</div>
-					<Panel />
-				</div>
+				<PlateEditor />
 			</SidebarInset>
+			<Panel />
 		</>
 	);
 }
